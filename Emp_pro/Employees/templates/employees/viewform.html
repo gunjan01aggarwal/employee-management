@@ -1,0 +1,50 @@
+{% extends "employees/base.html" %}
+{% block body %}
+</br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <h4 class="card-title">Employee Information</h4>
+                </div>
+            
+                <div class="card-body"> 
+                    <form action="{% url 'Employees:read' employee_.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="container">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="bg-primary">Employee Name:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{employee_.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary">Email:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{employee_.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary">Department:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{employee_.department}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bg-primary">Role:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{employee_.role}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary">Date_joined:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{employee_.date_joined}}</td>
+                                </tr>
+                                        
+                            </tbody>
+                        </table>
+                    </div>
+                    </form>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

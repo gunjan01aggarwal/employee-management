@@ -1,0 +1,100 @@
+{% extends 'employees/base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+        <form method="GET" class="row">
+            <!-- Department Field -->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select name="department" class="form-control" id="department">
+                        <option value="">Select Department</option>
+                        <option value="HR">HR</option>
+                        <option value="IT">IT</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Role Field -->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select name="role" class="form-control" id="role">
+                        <option value="">Select Role</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Analyst">Analyst</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary mt-4">Search</button>
+            </div>
+        </form>
+        </div>
+
+        <br/>
+        <div class="row">
+            <div class="col-md-6 offset-md-5">
+                <a href="{% url 'Employees:add' %}" class="btn btn-primary">ADD EMPLOYEE</a>
+            </div>
+        </div>
+        <br/>
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-primary">
+                    <th>S.No</th>
+                    <th>Employee Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Date_joined</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees_ %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email}}</td>
+                    <td>{{ employee.department}}</td>
+                    <td>{{ employee.role}}</td>
+                    <td>{{ employee.date_joined}}</td>
+                    <td>
+                        <a href="{% url 'Employees:read' employee.id %}" class="btn btn-info">Read</a>
+                        <a href="{% url 'Employees:update' employee.id  %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'Employees:delete' employee.id  %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>    
+
+        <div class="row">
+                <div class="col-md-3 offset-md-4">
+                    <ul class="pagination">
+
+                        {% if employees_.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href= "?page={{employees_.previous_page_number}}">Previous</a>
+                            </li>
+                        {% endif %}
+
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{employees_.number}}">Current</a>
+                        </li>
+
+                        {% if employees_.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href= "?page={{employees_.next_page_number}}">Next</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+body{
+    background:lightblue;
+}
+
+
+/* Message container */
+.custom-message-container {
+    margin-top: 20px;
+}
+
+/* General message styling */
+.custom-message {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    position: relative;
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Close button */
+.custom-message .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+
+/* Success message (Green) */
+.success {
+    background-color: #28a745;
+}
+
+/* Error message (Red) */
+.error {
+    background-color: #dc3545;
+}
+
+/* Info message (Blue) */
+.info {
+    background-color: #17a2b8;
+}
+
+/* Warning message (Yellow) */
+.warning {
+    background-color: #ffc107;
+    color: black;  /* Change text color for better contrast on yellow */
+}

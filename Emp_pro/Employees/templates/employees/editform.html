@@ -1,0 +1,49 @@
+{% extends 'employees/base.html' %}
+{% block body %}
+
+<br/>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-white bg-info">
+                        <h4 class="card-title">EMPLOYEE FORM</h4>
+                    </div>
+                    <div class="card-body" style="height: 500px; overflow-y: auto;">  <!-- Added height and scrollbar -->
+                    <form action="{% url 'Employees:update' employee_.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Employee_name:</label>
+                        <input type="text" class="form-control" value={{employee_.name}} id="name" placeholder="Enter name" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" class="form-control" value={{employee_.email}} id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department:</label>
+                        <select class="form-control" id="department" name="department">
+                            <option value="HR" {% if employee_.department == "HR" %} SELECTED {% endif %}>HR</option>
+                            <option value="Engineering" {% if employee_.department == "Engineering" %} SELECTED {% endif %}>Engineering</option>
+                            <option value="Sales" {% if employee_.department == "Sales" %} SELECTED {% endif %}>Sales</option>
+                            <option value="Accounts" {% if employee_.department == "Accounts" %} SELECTED {% endif %}>Accounts</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role:</label>
+                        <select class="form-control" id="role" name="role">
+                            <option value="Manager" {% if employee_.role == "Manager" %} SELECTED {% endif %}>Manager</option>
+                            <option value="Developer" {% if employee_.role == "Developer" %} SELECTED {% endif %}>Developer</option>
+                            <option value="Analyst" {% if employee_.role == "Analyst" %} SELECTED {% endif %}>Analyst</option>
+                            <option value="Customer Executive" {% if employee_.role == "Customer Executive" %} SELECTED {% endif %}>Customer Executive</option>
+                        </select>
+                    </div>
+                   
+                   <button type="submit" class="btn btn-dark w-100">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>            
+
+{% endblock %}
