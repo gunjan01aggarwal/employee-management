@@ -6,8 +6,12 @@
                                     <td class="p-3 mb-2 bg-light text-dark">{{user.username}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="bg-primary">Email:</td>
-                                    <td class="p-3 mb-2 bg-light text-dark">{{user.email}}</td>
+                                    <td class="bg-primary">Photo:</td>
+                                    <td><img src="{{user.profile.image.url}}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-primary">Location:</td>
+                                    <td class="p-3 mb-2 bg-light text-dark">{{user.profile.location}}</td>
                                 </tr>
                             </tbody>
                             </table>

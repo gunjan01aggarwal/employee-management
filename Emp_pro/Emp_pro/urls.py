@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path,include
 from Users import  views as user_view 
 from django.contrib.auth import views as authentication_views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -28,3 +31,7 @@ urlpatterns = [
     path('profile/',user_view.profile_page,name="profile_page"),
 ]
 
+
+urlpatterns += [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
